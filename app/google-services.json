@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "122627715723",
+    "firebase_url": "https://cschedule-dd40e.firebaseio.com",
+    "project_id": "cschedule-dd40e",
+    "storage_bucket": "cschedule-dd40e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:122627715723:android:c3b033933cf4951f",
+        "android_client_info": {
+          "package_name": "com.tugas.raihan.c_schedule"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "122627715723-obca8ftbfdpjdlck0dddb33cretenf73.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tugas.raihan.c_schedule",
+            "certificate_hash": "2403af988a2df9c9a87cc7001833f624f8d9d3c5"
+          }
+        },
+        {
+          "client_id": "122627715723-11paqbvqbbfup9b7tbg85880i619lu9t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgHr2tWZEEIgIfM56fih1lrHoxArgxIJ8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "122627715723-11paqbvqbbfup9b7tbg85880i619lu9t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
