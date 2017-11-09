@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         init();
-        initOnClick();
+        initListener();
 
     }
 
@@ -44,12 +44,12 @@ public class LoginActivity extends AppCompatActivity {
         signup = findViewById(R.id.signup);
     }
 
-    private void initOnClick() {
+    private void initListener() {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this, MainActivity.class));
-//                updateUI();
+//                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                login();
             }
         });
         signup.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void updateUI(FirebaseUser user) {
+    private void login() {
 
     }
 
@@ -74,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             //TO DO main program
                             FirebaseUser user = firebaseAuth.getCurrentUser();
-                            updateUI(user);
+//                            updateUI(user);
                         } else {
                             Toast.makeText(LoginActivity.this, "Wrong email or password", Toast.LENGTH_LONG);
                             //TO DO updateUI failed
@@ -89,6 +89,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         FirebaseUser user = firebaseAuth.getCurrentUser();
-        updateUI(user);
+//        updateUI(user);
     }
 }

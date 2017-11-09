@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">C-Schedule</string>
+    <string name="trans_logo">transition_logo</string>
+    <string name="trans_app_name">transition_app_name</string>
 </resources>
