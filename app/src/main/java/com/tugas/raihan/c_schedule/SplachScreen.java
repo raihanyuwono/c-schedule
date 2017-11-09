@@ -60,7 +60,7 @@ public class SplachScreen extends AppCompatActivity {
     }
 
     private void startSplash() {
-        Intent intent = new Intent(this, LoginActivity.class);
+        Intent intent = new Intent(this, ChatActivity.class);
         ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this,
                 new Pair<View, String>(logo, getString(R.string.trans_logo)),
                 new Pair<View, String>(app_name, getString(R.string.trans_app_name)));
