@@ -9,12 +9,24 @@
     android:theme="@style/ChatTheme"
     tools:context="com.tugas.raihan.c_schedule.ChatActivity">
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_chat"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/container_message">
+
+    </android.support.v7.widget.RecyclerView>
+
     <RelativeLayout
+        android:id="@+id/container_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@color/colorPrimary"
-        android:padding="8dp">
+        android:paddingBottom="10dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="10dp">
 
         <EditText
             android:id="@+id/message"

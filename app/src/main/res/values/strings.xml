@@ -3,5 +3,5 @@
     <string name="trans_logo">transition_logo</string>
     <string name="trans_app_name">transition_app_name</string>
     <string name="send">SEND</string>
-    <string name="edit_message">enter a message</string>
+    <string name="edit_message">enter a message…</string>
 </resources>
