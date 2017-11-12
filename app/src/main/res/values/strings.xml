@@ -4,4 +4,8 @@
     <string name="trans_app_name">transition_app_name</string>
     <string name="send">SEND</string>
     <string name="edit_message">enter a message…</string>
+    <string name="login">Login</string>
+    <string name="sign_up">No account yet? Sign Up</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
 </resources>

@@ -2,6 +2,8 @@ package com.tugas.raihan.c_schedule;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -30,5 +32,16 @@ public class CalendarActivity extends AppCompatActivity {
         monthPrev = findViewById(R.id.prev_month);
         calendarView = findViewById(R.id.calendar_view);
         calendarView.setFirstDayOfWeek(Calendar.SUNDAY);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.calendar_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -60,7 +60,7 @@
                     android:id="@+id/input_login_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Email"
+                    android:hint="@string/email"
                     android:inputType="textEmailAddress"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -76,7 +76,7 @@
                     android:id="@+id/input_login_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Password"
+                    android:hint="@string/password"
                     android:inputType="textPassword"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -92,13 +92,15 @@
             android:layout_marginTop="24dp"
             android:background="@color/colorAccent"
             android:padding="12dp"
-            android:text="Login" />
+            android:text="@string/login"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
             android:id="@+id/signup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="No account yet? Sign Up" />
+            android:text="@string/sign_up"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
 
     </LinearLayout>
 
