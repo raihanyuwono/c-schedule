@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import static com.tugas.raihan.c_schedule.StaticVariable.LABEL_CHAT;
+
 public class ChatActivity extends AppCompatActivity {
 
     private EditText message;
@@ -36,6 +38,9 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     private void initItems() {
+        String title = getIntent().getStringExtra(LABEL_CHAT);
+        setTitle(title != null ? title : getString(R.string.app_name));
+
         message = findViewById(R.id.message);
         send = findViewById(R.id.send);
         recyclerChat = findViewById(R.id.recycler_chat);
@@ -50,14 +55,20 @@ public class ChatActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
+        Intent intent = null;
+
         switch (item.getItemId()) {
+            case R.id.home:
+                intent = new Intent(this, GroupActivity.class);
+                break;
             case R.id.calendar:
-                Intent intent = new Intent(this, CalendarActivity.class);
-                startActivity(intent);
+                intent = new Intent(this, CalendarActivity.class);
                 break;
             default:
                 break;
         }
+
+        if (intent != null) startActivity(intent);
 
         return super.onOptionsItemSelected(item);
     }

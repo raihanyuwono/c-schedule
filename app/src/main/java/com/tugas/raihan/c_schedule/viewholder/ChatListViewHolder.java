@@ -12,6 +12,8 @@ import com.tugas.raihan.c_schedule.data.ChatListData;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import static com.tugas.raihan.c_schedule.StaticVariable.LABEL_CHAT;
+
 /**
  * Created by raihanyuwono on 11/13/17.
  */
@@ -33,7 +35,7 @@ public class ChatListViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(itemView.getContext(), ChatActivity.class);
-                intent.putExtra(StaticVariable.LABEL_CHAT, name.getText());
+                intent.putExtra(LABEL_CHAT, name.getText());
                 itemView.getContext().startActivity(intent);
             }
         });
@@ -42,7 +44,7 @@ public class ChatListViewHolder extends RecyclerView.ViewHolder {
 
     public void bind(ChatListData data) {
 
-        // change photo to firebase
+        // TO DO change photo to firebase
         this.photo.setImageResource(data.getPhoto());
         this.name.setText(data.getName());
         this.lastMessage.setText(data.getLastMessage());

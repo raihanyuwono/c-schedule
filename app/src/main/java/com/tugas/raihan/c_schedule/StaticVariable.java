@@ -7,5 +7,7 @@ package com.tugas.raihan.c_schedule;
 public class StaticVariable {
 
     public static final String LABEL_CHAT = "GROUP_NAME";
+    public static final String LABEL_BTN = "BUTTON";
+    public static final String LABEL_TEXT = "TEXT";
 
 }

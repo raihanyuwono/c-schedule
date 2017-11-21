@@ -1,9 +1,11 @@
 package com.tugas.raihan.c_schedule;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +17,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import static com.tugas.raihan.c_schedule.StaticVariable.LABEL_BTN;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -28,14 +32,14 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        getSupportActionBar().hide();
 
-        init();
+        initItems();
         initListener();
 
     }
 
-    private void init() {
+    private void initItems() {
+        getSupportActionBar().hide();
         firebaseAuth = FirebaseAuth.getInstance();
 
         inputEmail = findViewById(R.id.input_login_email);
@@ -55,7 +59,8 @@ public class LoginActivity extends AppCompatActivity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+                startActivity(intent);
             }
         });
     }
