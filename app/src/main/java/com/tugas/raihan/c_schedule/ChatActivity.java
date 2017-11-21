@@ -3,6 +3,7 @@ package com.tugas.raihan.c_schedule;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,13 +11,23 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.tugas.raihan.c_schedule.adapter.MessageAdapter;
+import com.tugas.raihan.c_schedule.data.MessageData;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.tugas.raihan.c_schedule.StaticVariable.LABEL_CHAT;
+import static com.tugas.raihan.c_schedule.StaticVariable.LABEL_OTHER;
+import static com.tugas.raihan.c_schedule.StaticVariable.LABEL_OWN;
 
 public class ChatActivity extends AppCompatActivity {
 
     private EditText message;
     private ImageView send;
     private RecyclerView recyclerChat;
+
+    private List<MessageData> listMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,16 +36,32 @@ public class ChatActivity extends AppCompatActivity {
 
         initItems();
         initListeners();
+        loadItems();
 
+    }
+
+    private void loadItems() {
+        recyclerChat.setLayoutManager(new LinearLayoutManager(this));
     }
 
     private void initListeners() {
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // SEND MESSAGE
+                //TO DO change to firebase
+                String mess = message.getText().toString();
+                message.setText("");
+                listMessage.add(new MessageData(LABEL_OWN, mess));
+                updateMessage();
             }
         });
+    }
+
+    private void updateMessage() {
+        listMessage.add(new MessageData(LABEL_OTHER, "Oi"));
+        MessageAdapter adapter = new MessageAdapter(listMessage);
+        recyclerChat.setAdapter(adapter);
+        recyclerChat.scrollToPosition(listMessage.size() - 1);
     }
 
     private void initItems() {
@@ -44,6 +71,8 @@ public class ChatActivity extends AppCompatActivity {
         message = findViewById(R.id.message);
         send = findViewById(R.id.send);
         recyclerChat = findViewById(R.id.recycler_chat);
+
+        listMessage = new ArrayList<>();
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.tugas.raihan.c_schedule;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -42,6 +43,15 @@ public class CalendarActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.add_event:
+                startActivity(new Intent(this, AddEventActivity.class));
+                break;
+            default:
+                break;
+        }
+
         return super.onOptionsItemSelected(item);
     }
 }
