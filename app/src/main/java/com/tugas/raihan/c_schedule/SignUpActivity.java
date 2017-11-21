@@ -34,6 +34,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void initItems() {
+        getSupportActionBar().hide();
         inputEmail = findViewById(R.id.input_sign_up_email);
         inputPassword = findViewById(R.id.input_sign_up_password);
         inputConfirmPassword = findViewById(R.id.input_sign_up_confirm_password);
