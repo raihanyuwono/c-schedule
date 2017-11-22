@@ -1,6 +1,7 @@
 package com.tugas.raihan.c_schedule;
 
 import android.app.ActivityOptions;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -19,14 +20,17 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import static com.tugas.raihan.c_schedule.StaticVariable.LABEL_BTN;
+import static com.tugas.raihan.c_schedule.StaticVariable.firebaseAuth;
+import static com.tugas.raihan.c_schedule.StaticVariable.user;
 
 public class LoginActivity extends AppCompatActivity {
-
-    private FirebaseAuth firebaseAuth;
 
     private EditText inputEmail, inputPassword;
     private Button btnLogin;
     private TextView signup;
+
+    private String email, password;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,20 +44,22 @@ public class LoginActivity extends AppCompatActivity {
 
     private void initItems() {
         getSupportActionBar().hide();
-        firebaseAuth = FirebaseAuth.getInstance();
 
         inputEmail = findViewById(R.id.input_login_email);
         inputPassword = findViewById(R.id.input_login_password);
         btnLogin = findViewById(R.id.login);
         signup = findViewById(R.id.signup);
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Please Wait");
     }
 
     private void initListener() {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this, MainActivity.class));
-//                login();
+//                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                login();
             }
         });
         signup.setOnClickListener(new View.OnClickListener() {
@@ -66,34 +72,42 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void login() {
+        progressDialog.show();
 
-    }
+        email = inputEmail.getText().toString();
+        password = inputPassword.getText().toString();
+        if (checkRequired()) {
+            firebaseAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            progressDialog.dismiss();
+                            if (task.isSuccessful()) {
+                                //TO DO main program
+                                user = firebaseAuth.getCurrentUser();
+                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                            } else {
+                                Toast.makeText(LoginActivity.this, "Wrong email or password", Toast.LENGTH_LONG);
+                                //TO DO updateUI failed
+                            }
 
-    private void updateUI() {
-        String email = inputEmail.getText().toString();
-        String password = inputPassword.getText().toString();
-        firebaseAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            //TO DO main program
-                            FirebaseUser user = firebaseAuth.getCurrentUser();
-//                            updateUI(user);
-                        } else {
-                            Toast.makeText(LoginActivity.this, "Wrong email or password", Toast.LENGTH_LONG);
-                            //TO DO updateUI failed
                         }
-
-                    }
-                });
+                    });
+        } else {
+            Toast.makeText(LoginActivity.this, "email and password are required", Toast.LENGTH_LONG).show();
+        }
     }
 
+    private boolean checkRequired() {
+        return !(email.equals("") || password.equals(""));
+    }
 
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-//        updateUI(user);
+        if (user != null) {
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            finish();
+        }
     }
 }

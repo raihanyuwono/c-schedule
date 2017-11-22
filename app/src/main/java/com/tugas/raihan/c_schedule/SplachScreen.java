@@ -10,6 +10,11 @@ import android.os.Bundle;
 import android.util.Pair;
 import android.view.View;
 
+import com.google.firebase.auth.FirebaseAuth;
+
+import static com.tugas.raihan.c_schedule.StaticVariable.firebaseAuth;
+import static com.tugas.raihan.c_schedule.StaticVariable.user;
+
 public class SplachScreen extends AppCompatActivity {
 
     private final int SPLASH_DISPLAY_LENGTH = 3500;
@@ -57,6 +62,9 @@ public class SplachScreen extends AppCompatActivity {
     private void initItems() {
         logo = findViewById(R.id.logo);
         app_name = findViewById(R.id.app_name);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        user = firebaseAuth.getInstance().getCurrentUser();
     }
 
     private void startSplash() {
