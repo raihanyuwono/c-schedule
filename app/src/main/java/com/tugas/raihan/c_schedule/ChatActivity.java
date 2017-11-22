@@ -16,10 +16,13 @@ import com.tugas.raihan.c_schedule.data.MessageData;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static com.tugas.raihan.c_schedule.StaticVariable.LABEL_CHAT;
 import static com.tugas.raihan.c_schedule.StaticVariable.LABEL_OTHER;
 import static com.tugas.raihan.c_schedule.StaticVariable.LABEL_OWN;
+import static com.tugas.raihan.c_schedule.StaticVariable.user;
 
 public class ChatActivity extends AppCompatActivity {
 
@@ -78,6 +81,10 @@ public class ChatActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_chat, menu);
+//        String regex = "user[*]+";
+//        Pattern p = Pattern.compile(regex);
+//        Matcher matcher = p.matcher((getIntent().getStringExtra(LABEL_CHAT)));
+
         return true;
     }
 
